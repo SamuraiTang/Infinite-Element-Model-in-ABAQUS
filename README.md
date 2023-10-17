@@ -2,9 +2,9 @@
 
 1. Build the Finite Element model through ABAQUS;
 
-2. During the meshing, we need to set the corresponding area to the "Sweep" mode. Meanwhile, please adjust the sweep path and direction;
+2. During the meshing, we must set the corresponding area to the "Sweep" mode. Meanwhile, please adjust the sweep path and direction;
 
-3. Switch the element type of the objective elements to something else, whose element nodes are no less than those in the final infinite element;
+3. Switch the element type of the objective elements to something else whose element nodes are no less than those in the final infinite element;
 
 4. Run the simulation to make sure the model is feasible;
 
@@ -16,9 +16,11 @@
 
 8. Release the corresponding boundary conditions;
 
-9. Reselect the nodes for the Set "ALLNODES" since the
+9. Do not Reselect the nodes for the Set "ALLNODES" since the ABAQUS will change the element connectivity automatically;
 
-10. if the stiffness matrix is required, please insert the modified command into the keywords:
+10. Create a new assembly set containing all the infinite elements (usually named "INFI");
+
+11. if the stiffness matrix is required, please insert the modified command into the keywords:
           **
     
           *STEP
@@ -29,4 +31,8 @@
     
           *END STEP
 
-12. Run the simulation using the 
+12. Run the simulation using the infinite model;
+
+13. Double-check the element connectivity and the results, and calculate the actual number of nodes;
+
+14. 
